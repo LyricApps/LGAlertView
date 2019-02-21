@@ -2984,6 +2984,10 @@ LGAlertViewType;
     {
         CGFloat bottomShift = self.offsetVertical;
 
+		if (@available(iOS 11.0, *)) {
+			bottomShift += self.window.safeAreaInsets.bottom;
+		}
+		
         if ([LGAlertViewHelper isCancelButtonSeparate:self] && self.cancelButton) {
             bottomShift += self.buttonsHeight+self.cancelButtonOffsetY;
         }
