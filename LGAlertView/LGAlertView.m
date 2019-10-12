@@ -3002,6 +3002,9 @@ LGAlertViewType;
 
         if ([LGAlertViewHelper isCancelButtonSeparate:self] && self.cancelButton) {
             cancelButtonFrame = CGRectMake((size.width - width) / 2.0, size.height - self.cancelButtonOffsetY - self.buttonsHeight, width, self.buttonsHeight);
+			if (@available(iOS 11.0, *)) {
+				cancelButtonFrame.origin.y -= self.window.safeAreaInsets.bottom;
+			}
         }
 
         self.scrollViewCenterShowed = CGPointMake(CGRectGetMinX(scrollViewFrame) + (CGRectGetWidth(scrollViewFrame) / 2.0),
