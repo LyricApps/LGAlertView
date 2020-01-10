@@ -130,15 +130,21 @@ CGFloat const LGAlertViewButtonImageOffsetFromTitle = 8.0;
     return [UIDevice currentDevice].systemVersion.floatValue;
 }
 
-#if !(defined(__has_feature) && __has_feature(attribute_availability_app_extension))
 + (UIWindow *)appWindow {
+#if !(defined(__has_feature) && __has_feature(attribute_availability_app_extension))
     return [UIApplication sharedApplication].delegate.window;
+#else
+	return nil;
+#endif
 }
 
 + (UIWindow *)keyWindow {
+#if !(defined(__has_feature) && __has_feature(attribute_availability_app_extension))
     return [UIApplication sharedApplication].keyWindow;
-}
+#else
+	return nil;
 #endif
+}
 
 + (BOOL)isViewControllerBasedStatusBarAppearance {
     static BOOL isViewControllerBasedStatusBarAppearance;
