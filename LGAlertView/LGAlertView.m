@@ -1353,6 +1353,10 @@ LGAlertViewType;
 - (CGFloat)width {
     CGSize size = LGAlertViewHelper.appWindow.bounds.size;
 
+	if (CGSizeEqualToSize(size, CGSizeZero)) {
+		size = CGSizeMake(320.0, 480.0);
+	}
+
     if (_width != NSNotFound) {
         CGFloat result = MIN(size.width, size.height);
 

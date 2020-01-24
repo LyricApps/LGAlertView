@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
     s.name = 'LGAlertView'
-    s.version = '2.4.3'
+    s.version = '2.4.4'
     s.platform = :ios, '8.0'
     s.license = 'MIT'
     s.homepage = 'https://github.com/Friend-LGA/LGAlertView'
@@ -14,5 +14,14 @@ Pod::Spec.new do |s|
     s.requires_arc = true
 
     s.source_files = 'LGAlertView/*.{h,m}'
-
+	
+	s.default_subspec = 'App'
+	
+	s.subspec 'App' do |app|
+		
+	end
+	
+	s.subspec 'Extension' do |extension|
+		extension.xcconfig = { 'OTHER_CFLAGS' => '$(inherited) -DTARGET_IS_EXTENSION' }
+	end
 end
