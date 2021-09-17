@@ -533,6 +533,9 @@ LGAlertViewType;
 												  actionHandler:nil
 												  cancelHandler:nil
 											 destructiveHandler:nil];
+	CGRect frame = view.frame;
+	frame.size = [view systemLayoutSizeFittingSize:CGSizeMake(alertView.width, UILayoutFittingCompressedSize.height) withHorizontalFittingPriority:UILayoutPriorityRequired verticalFittingPriority:UILayoutPriorityDefaultLow];
+	view.frame = frame;
 	view.alertView = alertView;
 	return alertView;
 }
