@@ -3346,6 +3346,9 @@ LGAlertViewType;
 }
 
 - (CGFloat)innerMarginHeight {
+	if (!self.title && !self.message && self.buttonTitles.count == 0 && !self.cancelButtonTitle && !self.destructiveButtonTitle) {
+		return 0.0;
+	}
     return self.style == LGAlertViewStyleAlert ? 16.0 : 12.0;
 }
 
