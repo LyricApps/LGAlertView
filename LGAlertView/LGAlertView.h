@@ -75,6 +75,12 @@ typedef NS_ENUM(NSUInteger, LGAlertViewWindowLevel) {
     LGAlertViewWindowLevelBelowStatusBar = 1
 };
 
+@protocol LGAlertViewCustomView
+
+@property (assign, nonatomic, nullable) LGAlertView *alertView;
+
+@end
+
 #pragma mark -
 
 @interface LGAlertView : NSObject <UIAppearance>
@@ -500,6 +506,9 @@ typedef NS_ENUM(NSUInteger, LGAlertViewWindowLevel) {
                                      buttonTitles:(nullable NSArray<NSString *> *)buttonTitles
                                 cancelButtonTitle:(nullable NSString *)cancelButtonTitle
                            destructiveButtonTitle:(nullable NSString *)destructiveButtonTitle;
+
++ (nonnull instancetype)alertViewWithStyle:(LGAlertViewStyle)style
+									  view:(nonnull UIView<LGAlertViewCustomView> *)view;
 
 + (nonnull instancetype)alertViewWithActivityIndicatorAndTitle:(nullable NSString *)title
                                                        message:(nullable NSString *)message

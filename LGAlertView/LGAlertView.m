@@ -521,6 +521,22 @@ LGAlertViewType;
                            destructiveHandler:destructiveHandler];
 }
 
++ (nonnull instancetype)alertViewWithStyle:(LGAlertViewStyle)style
+									  view:(nonnull UIView<LGAlertViewCustomView> *)view {
+	LGAlertView *alertView = [[self alloc] initWithViewAndTitle:nil
+														message:nil
+														  style:style
+														   view:view
+												   buttonTitles:nil
+											  cancelButtonTitle:nil
+										 destructiveButtonTitle:nil
+												  actionHandler:nil
+												  cancelHandler:nil
+											 destructiveHandler:nil];
+	view.alertView = alertView;
+	return alertView;
+}
+
 + (nonnull instancetype)alertViewWithActivityIndicatorAndTitle:(nullable NSString *)title
                                                        message:(nullable NSString *)message
                                                          style:(LGAlertViewStyle)style
