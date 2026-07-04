@@ -1699,6 +1699,9 @@ LGAlertViewType;
         keyWindow.hidden = YES;
     }
 
+    // Attach the alert window to the active window scene, otherwise it is never displayed under the UIScene lifecycle (iOS 13+)
+    self.window.windowScene = LGAlertViewHelper.appWindow.windowScene;
+
     [self.window makeKeyAndVisible];
 
     // -----
